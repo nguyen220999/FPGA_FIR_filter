@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "E:/DATA/learn_fpga/FIR_filter/FIR_filter_testbench_isim_beh.exe" -prj "E:/DATA/learn_fpga/FIR_filter/FIR_filter_testbench_beh.prj" "work.FIR_filter_testbench" 

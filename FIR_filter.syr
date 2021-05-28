@@ -1,0 +1,469 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: FIR_filter.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "FIR_filter.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "FIR_filter"
+Output Format                      : NGC
+Target Device                      : xa3s500e-4-pqg208
+
+---- Source Options
+Top Module Name                    : FIR_filter
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "E:/DATA/learn_fpga/FIR_filter/N_bit_Reg.vhd" in Library work.
+Architecture behavioral of Entity n_bit_reg is up to date.
+Compiling vhdl file "E:/DATA/learn_fpga/FIR_filter/FIR_filter.vhd" in Library work.
+Architecture behavioral of Entity fir_filter is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <FIR_filter> in library <work> (architecture <behavioral>) with generics.
+	coef_width = 8
+	guard = 0
+	input_width = 8
+	output_width = 16
+	tap = 11
+
+Analyzing hierarchy for entity <N_bit_Reg> in library <work> (architecture <behavioral>) with generics.
+	input_width = 8
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <FIR_filter> in library <work> (Architecture <behavioral>).
+	coef_width = 8
+	guard = 0
+	input_width = 8
+	output_width = 16
+	tap = 11
+Entity <FIR_filter> analyzed. Unit <FIR_filter> generated.
+
+Analyzing generic Entity <N_bit_Reg> in library <work> (Architecture <behavioral>).
+	input_width = 8
+Entity <N_bit_Reg> analyzed. Unit <N_bit_Reg> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <N_bit_Reg>.
+    Related source file is "E:/DATA/learn_fpga/FIR_filter/N_bit_Reg.vhd".
+    Found 8-bit register for signal <Q>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <N_bit_Reg> synthesized.
+
+
+Synthesizing Unit <FIR_filter>.
+    Related source file is "E:/DATA/learn_fpga/FIR_filter/FIR_filter.vhd".
+WARNING:Xst:646 - Signal <mult<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 8x8-bit multiplier for signal <ADD<0>>.
+    Found 16-bit adder for signal <ADD<1:10>>.
+    Found 8x8-bit multiplier for signal <mult<1:10>>.
+    Summary:
+	inferred  10 Adder/Subtractor(s).
+	inferred  11 Multiplier(s).
+Unit <FIR_filter> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 11
+ 8x8-bit multiplier                                    : 11
+# Adders/Subtractors                                   : 10
+ 16-bit adder                                          : 10
+# Registers                                            : 10
+ 8-bit register                                        : 10
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 11
+ 8x8-bit multiplier                                    : 11
+# Adders/Subtractors                                   : 10
+ 16-bit adder                                          : 10
+# Registers                                            : 80
+ Flip-Flops                                            : 80
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <FIR_filter> ...
+
+Optimizing unit <N_bit_Reg> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block FIR_filter, actual ratio is 2.
+PACKER Warning: Lut Madd_ADD<2>_Madd_lut<13>1 driving carry Madd_ADD<2>_Madd_cy<13> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut Madd_ADD<2>_Madd_lut<14> driving carry Madd_ADD<2>_Madd_cy<14> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 80
+ Flip-Flops                                            : 80
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : FIR_filter.ngr
+Top Level Output File Name         : FIR_filter
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 26
+
+Cell Usage :
+# BELS                             : 305
+#      GND                         : 1
+#      LUT2                        : 5
+#      LUT3                        : 74
+#      LUT4                        : 68
+#      MUXCY                       : 75
+#      MUXF5                       : 1
+#      VCC                         : 1
+#      XORCY                       : 80
+# FlipFlops/Latches                : 80
+#      FDC                         : 80
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 25
+#      IBUF                        : 9
+#      OBUF                        : 16
+# MULTs                            : 11
+#      MULT18X18SIO                : 11
+=========================================================================
+PACKER Warning: Lut Madd_ADD<2>_Madd_lut<13>1 driving carry Madd_ADD<2>_Madd_cy<13> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut Madd_ADD<2>_Madd_lut<14> driving carry Madd_ADD<2>_Madd_cy<14> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+
+Device utilization summary:
+---------------------------
+
+Selected Device : xa3s500epqg208-4 
+
+ Number of Slices:                       93  out of   4656     1%  
+ Number of Slice Flip Flops:             80  out of   9312     0%  
+ Number of 4 input LUTs:                147  out of   9312     1%  
+ Number of IOs:                          26
+ Number of bonded IOBs:                  26  out of    158    16%  
+ Number of MULT18X18SIOs:                11  out of     20    55%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+Clk                                | BUFGP                  | 80    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 80    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 1.860ns (Maximum Frequency: 537.634MHz)
+   Minimum input arrival time before clock: 2.487ns
+   Maximum output required time after clock: 27.528ns
+   Maximum combinational path delay: 28.015ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Clk'
+  Clock period: 1.860ns (frequency: 537.634MHz)
+  Total number of paths / destination ports: 72 / 72
+-------------------------------------------------------------------------
+Delay:               1.860ns (Levels of Logic = 0)
+  Source:            GEN_FIR[8].N_bit_Reg_unit/Q_7 (FF)
+  Destination:       GEN_FIR[9].N_bit_Reg_unit/Q_7 (FF)
+  Source Clock:      Clk rising
+  Destination Clock: Clk rising
+
+  Data Path: GEN_FIR[8].N_bit_Reg_unit/Q_7 to GEN_FIR[9].N_bit_Reg_unit/Q_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             12   0.591   0.961  GEN_FIR[8].N_bit_Reg_unit/Q_7 (GEN_FIR[8].N_bit_Reg_unit/Q_7)
+     FDC:D                     0.308          GEN_FIR[9].N_bit_Reg_unit/Q_7
+    ----------------------------------------
+    Total                      1.860ns (0.899ns logic, 0.961ns route)
+                                       (48.3% logic, 51.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              2.487ns (Levels of Logic = 1)
+  Source:            Din<7> (PAD)
+  Destination:       GEN_FIR[0].N_bit_Reg_unit/Q_7 (FF)
+  Destination Clock: Clk rising
+
+  Data Path: Din<7> to GEN_FIR[0].N_bit_Reg_unit/Q_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            12   1.218   0.961  Din_7_IBUF (Din_7_IBUF)
+     FDC:D                     0.308          GEN_FIR[0].N_bit_Reg_unit/Q_7
+    ----------------------------------------
+    Total                      2.487ns (1.526ns logic, 0.961ns route)
+                                       (61.4% logic, 38.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk'
+  Total number of paths / destination ports: 15108305 / 16
+-------------------------------------------------------------------------
+Offset:              27.528ns (Levels of Logic = 26)
+  Source:            GEN_FIR[0].N_bit_Reg_unit/Q_0 (FF)
+  Destination:       Dout<15> (PAD)
+  Source Clock:      Clk rising
+
+  Data Path: GEN_FIR[0].N_bit_Reg_unit/Q_0 to Dout<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.591   0.447  GEN_FIR[0].N_bit_Reg_unit/Q_0 (GEN_FIR[0].N_bit_Reg_unit/Q_0)
+     MULT18X18SIO:A0->P1    2   3.657   0.622  Mmult_mult<1> (mult<1><1>)
+     LUT3:I0->O            1   0.704   0.595  Madd_ADD<2>C1 (Madd_ADD<2>C)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<2>_Madd_lut<2> (Madd_ADD<2>_Madd_lut<2>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<2>_Madd_cy<2> (Madd_ADD<2>_Madd_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<2>_Madd_cy<3> (Madd_ADD<2>_Madd_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<2>_Madd_cy<4> (Madd_ADD<2>_Madd_cy<4>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<2>_Madd_xor<5> (ADD<2><5>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<4>C41 (Madd_ADD<4>C4)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<4>_Madd_lut<6> (Madd_ADD<4>_Madd_lut<6>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<4>_Madd_cy<6> (Madd_ADD<4>_Madd_cy<6>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<4>_Madd_xor<7> (ADD<4><7>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<6>C61 (Madd_ADD<6>C6)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<6>_Madd_lut<8> (Madd_ADD<6>_Madd_lut<8>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<6>_Madd_cy<8> (Madd_ADD<6>_Madd_cy<8>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<6>_Madd_xor<9> (ADD<6><9>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<8>C81 (Madd_ADD<8>C8)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<8>_Madd_lut<10> (Madd_ADD<8>_Madd_lut<10>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<8>_Madd_cy<10> (Madd_ADD<8>_Madd_cy<10>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<8>_Madd_xor<11> (ADD<8><11>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<10>C101 (Madd_ADD<10>C10)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<10>_Madd_lut<12> (Madd_ADD<10>_Madd_lut<12>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<10>_Madd_cy<12> (Madd_ADD<10>_Madd_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<10>_Madd_cy<13> (Madd_ADD<10>_Madd_cy<13>)
+     MUXCY:CI->O           0   0.059   0.000  Madd_ADD<10>_Madd_cy<14> (Madd_ADD<10>_Madd_cy<14>)
+     XORCY:CI->O           1   0.804   0.420  Madd_ADD<10>_Madd_xor<15> (Dout_15_OBUF)
+     OBUF:I->O                 3.272          Dout_15_OBUF (Dout<15>)
+    ----------------------------------------
+    Total                     27.528ns (21.136ns logic, 6.392ns route)
+                                       (76.8% logic, 23.2% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 6065089 / 16
+-------------------------------------------------------------------------
+Delay:               28.015ns (Levels of Logic = 27)
+  Source:            Din<0> (PAD)
+  Destination:       Dout<15> (PAD)
+
+  Data Path: Din<0> to Dout<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   1.218   0.447  Din_0_IBUF (Din_0_IBUF)
+     MULT18X18SIO:A0->P1    2   3.657   0.482  Mmult_ADD<0> (ADD<0><1>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<2>C1 (Madd_ADD<2>C)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<2>_Madd_lut<2> (Madd_ADD<2>_Madd_lut<2>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<2>_Madd_cy<2> (Madd_ADD<2>_Madd_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<2>_Madd_cy<3> (Madd_ADD<2>_Madd_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<2>_Madd_cy<4> (Madd_ADD<2>_Madd_cy<4>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<2>_Madd_xor<5> (ADD<2><5>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<4>C41 (Madd_ADD<4>C4)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<4>_Madd_lut<6> (Madd_ADD<4>_Madd_lut<6>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<4>_Madd_cy<6> (Madd_ADD<4>_Madd_cy<6>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<4>_Madd_xor<7> (ADD<4><7>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<6>C61 (Madd_ADD<6>C6)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<6>_Madd_lut<8> (Madd_ADD<6>_Madd_lut<8>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<6>_Madd_cy<8> (Madd_ADD<6>_Madd_cy<8>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<6>_Madd_xor<9> (ADD<6><9>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<8>C81 (Madd_ADD<8>C8)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<8>_Madd_lut<10> (Madd_ADD<8>_Madd_lut<10>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<8>_Madd_cy<10> (Madd_ADD<8>_Madd_cy<10>)
+     XORCY:CI->O           2   0.804   0.482  Madd_ADD<8>_Madd_xor<11> (ADD<8><11>)
+     LUT3:I2->O            1   0.704   0.595  Madd_ADD<10>C101 (Madd_ADD<10>C10)
+     LUT4:I0->O            1   0.704   0.000  Madd_ADD<10>_Madd_lut<12> (Madd_ADD<10>_Madd_lut<12>)
+     MUXCY:S->O            1   0.464   0.000  Madd_ADD<10>_Madd_cy<12> (Madd_ADD<10>_Madd_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_ADD<10>_Madd_cy<13> (Madd_ADD<10>_Madd_cy<13>)
+     MUXCY:CI->O           0   0.059   0.000  Madd_ADD<10>_Madd_cy<14> (Madd_ADD<10>_Madd_cy<14>)
+     XORCY:CI->O           1   0.804   0.420  Madd_ADD<10>_Madd_xor<15> (Dout_15_OBUF)
+     OBUF:I->O                 3.272          Dout_15_OBUF (Dout<15>)
+    ----------------------------------------
+    Total                     28.015ns (21.763ns logic, 6.252ns route)
+                                       (77.7% logic, 22.3% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.12 secs
+ 
+--> 
+
+Total memory usage is 4550928 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
